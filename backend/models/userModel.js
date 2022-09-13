@@ -8,13 +8,11 @@ const userSchema = mongoose.Schema(
         password: { type: "String", required: true },
         pic: {
             type: "String",
-            required: true,
             default:
-                "https://icon-library.com/images/anonymous-avatar-icon/anonymous-avatar-icon-25.jpg",
+                "./media/profilepic.jpg",
         },
         isAdmin: {
             type: Boolean,
-            required: true,
             default: false,
         },
     },
@@ -34,6 +32,6 @@ userSchema.pre("save", async function (next) {
     this.password = await bcrypt.hash(this.password, salt);
 });
 
-const User = mongoose.model("User", userSchema);
+const User = mongoose.model("Users", userSchema);
 
 module.exports = User;

@@ -1,17 +1,17 @@
 import { Box, Container, Tab, TabList, TabPanel, TabPanels, Tabs, Text } from "@chakra-ui/react";
-import { useEffect } from "react";
-import { useHistory } from "react-router";
+// import { useEffect } from "react";
+// import { useHistory } from "react-router";
 import Login from "../components/authentication/Login";
 import Signup from "../components/authentication/SignUp";
 
 export const Homepage = () => {
-    const history = useHistory();
+    // const history = useHistory();
 
-    useEffect(() => {
-        const user = JSON.parse(localStorage.getItem("userInfo"));
+    // useEffect(() => {
+    //     const user = JSON.parse(localStorage.getItem("userInfo"));
 
-        if (user) history.push("/chats");
-    }, [history]);
+    //     if (user) history.push("/chats");
+    // }, [history]);
 
     return (
         <Container maxW="md" centerContent>

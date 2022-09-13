@@ -22,6 +22,7 @@ const Signup = () => {
     const [pic, setPic] = useState();
     const [picLoading, setPicLoading] = useState(false);
 
+
     const submitHandler = async () => {
         setPicLoading(true);
         if (!name || !email || !password || !confirmpassword) {
@@ -53,7 +54,7 @@ const Signup = () => {
                 },
             };
             const { data } = await axios.post(
-                "/api/user",
+                "/api/user/signup",
                 {
                     name,
                     email,
@@ -62,7 +63,6 @@ const Signup = () => {
                 },
                 config
             );
-            console.log(data);
             toast({
                 title: "Registration Successful",
                 status: "success",
@@ -98,20 +98,18 @@ const Signup = () => {
             });
             return;
         }
-        console.log(pics);
         if (pics.type === "image/jpeg" || pics.type === "image/png") {
             const data = new FormData();
             data.append("file", pics);
-            data.append("upload_preset", "chat-app");
-            data.append("cloud_name", "piyushproj");
-            fetch("https://api.cloudinary.com/v1_1/piyushproj/image/upload", {
+            data.append("upload_preset", "chatify");
+            data.append("cloud_name", process.env.REACT_APP_CLOUDINARY_PROJECT);
+            fetch(`https://api.cloudinary.com/v1_1/${process.env.REACT_APP_CLOUDINARY_PROJECT}/image/upload`, {
                 method: "post",
                 body: data,
             })
                 .then((res) => res.json())
                 .then((data) => {
                     setPic(data.url.toString());
-                    console.log(data.url.toString());
                     setPicLoading(false);
                 })
                 .catch((err) => {
@@ -141,7 +139,7 @@ const Signup = () => {
                     onChange={(e) => setName(e.target.value)}
                 />
             </FormControl>
-            <FormControl id="email" isRequired>
+            <FormControl id="signup-email" isRequired>
                 <FormLabel mb={0}>Email Address</FormLabel>
                 <Input
                     type="email"
@@ -150,7 +148,7 @@ const Signup = () => {
                     onChange={(e) => setEmail(e.target.value)}
                 />
             </FormControl>
-            <FormControl id="password" isRequired>
+            <FormControl id="signup-password" isRequired>
                 <FormLabel mb={0}>Password</FormLabel>
                 <InputGroup size="md">
                     <Input
@@ -166,7 +164,7 @@ const Signup = () => {
                     </InputRightElement>
                 </InputGroup>
             </FormControl>
-            <FormControl id="password" isRequired>
+            <FormControl id="signup-confirm-password" isRequired>
                 <FormLabel mb={0}>Confirm Password</FormLabel>
                 <InputGroup size="md">
                     <Input

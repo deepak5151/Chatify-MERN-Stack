@@ -71,7 +71,7 @@ const Login = () => {
 
     return (
         <VStack spacing="15px">
-            <FormControl id="email" isRequired>
+            <FormControl id="login-email" isRequired>
                 <FormLabel mb={0}>Email Address</FormLabel>
                 <Input
                     variant='flushed'
