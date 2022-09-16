@@ -1,36 +1,46 @@
-import { Box, Container, Tab, TabList, TabPanel, TabPanels, Tabs, Text } from "@chakra-ui/react";
-// import { useEffect } from "react";
-// import { useHistory } from "react-router";
-import Login from "../components/authentication/Login";
-import Signup from "../components/authentication/SignUp";
+import {
+    Box,
+    Container,
+    Tab,
+    TabList,
+    TabPanel,
+    TabPanels,
+    Tabs,
+    Text,
+} from "@chakra-ui/react";
+import { useEffect } from "react";
+import { useHistory } from "react-router";
+import Login from "./authentication/Login";
+import Signup from "./authentication/SignUp";
 
-export const Homepage = () => {
-    // const history = useHistory();
+function HomePage() {
+    const history = useHistory();
 
-    // useEffect(() => {
-    //     const user = JSON.parse(localStorage.getItem("userInfo"));
+    useEffect(() => {
+        const user = JSON.parse(localStorage.getItem("userInfo"));
 
-    //     if (user) history.push("/chats");
-    // }, [history]);
+        if (user) history.push("/chats");
+    }, [history]);
 
     return (
-        <Container maxW="md" centerContent>
+        <Container maxW="xl" centerContent>
             <Box
-                d="flex"
+                display="flex"
                 justifyContent="center"
-                p={1}
+                p={3}
                 bg="white"
                 w="100%"
-                m="15px 0 10px 0"
+                m="10px 0 10px 0"
+                borderRadius="lg"
                 borderWidth="1px"
             >
-                <Text fontSize="2xl" fontFamily="Work sans" textAlign={"center"}>
+                <Text fontSize="2xl" fontFamily="Work sans">
                     Chatify
                 </Text>
             </Box>
-            <Box bg="white" w="100%" p={4} borderWidth="1px">
-                <Tabs isFitted variant='enclosed' colorScheme="teal">
-                    <TabList>
+            <Box bg="white" w="100%" px={4} py={2} borderRadius="lg" borderWidth="1px">
+                <Tabs isFitted variant="soft-rounded">
+                    <TabList mb="0px">
                         <Tab>Login</Tab>
                         <Tab>Sign Up</Tab>
                     </TabList>
@@ -48,4 +58,4 @@ export const Homepage = () => {
     );
 }
 
-export default Homepage;
+export default HomePage;

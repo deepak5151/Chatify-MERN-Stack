@@ -6,6 +6,7 @@ import { useToast } from "@chakra-ui/toast";
 import axios from "axios";
 import { useState } from "react";
 import { useHistory } from "react-router";
+import { ChatState } from "../../Context/ChatProvider";
 
 const Signup = () => {
     const [showPassword, setShowPassword] = useState(false);
@@ -14,6 +15,7 @@ const Signup = () => {
     const handleConfirmPassClick = () => setShowConfirmPass(!showConfirmPass);
     const toast = useToast();
     const history = useHistory();
+    const { setUser } = ChatState();
 
     const [name, setName] = useState();
     const [email, setEmail] = useState();
@@ -46,7 +48,6 @@ const Signup = () => {
             });
             return;
         }
-        console.log(name, email, password, pic);
         try {
             const config = {
                 headers: {
@@ -72,6 +73,7 @@ const Signup = () => {
             });
             localStorage.setItem("userInfo", JSON.stringify(data));
             setPicLoading(false);
+            setUser(data);
             history.push("/chats");
         } catch (error) {
             toast({

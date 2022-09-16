@@ -4,7 +4,8 @@
   "description": "MERN Chat App",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon server.js"
+    "start": "node server.js",
+    "heroku-postbuild":"NPM_CONFIG_PRODUCTION=false npm install --prefix frontend && npm run build --prefix frontend"
   },
   "author": "",
   "license": "ISC",
@@ -15,6 +16,7 @@
     "express-async-handler": "^1.2.0",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.6.0",
-    "nodemon": "^2.0.19"
+    "nodemon": "^2.0.19",
+    "socket.io": "^4.5.2"
   }
 }

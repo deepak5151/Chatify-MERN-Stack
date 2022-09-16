@@ -8,8 +8,7 @@ const userSchema = mongoose.Schema(
         password: { type: "String", required: true },
         pic: {
             type: "String",
-            default:
-                "./media/profilepic.jpg",
+            default: null,
         },
         isAdmin: {
             type: Boolean,
