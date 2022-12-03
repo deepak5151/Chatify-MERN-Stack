@@ -4,7 +4,7 @@
   "description": "MERN Chat App",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon backend/server.js"
+    "start": "nodemon backend/index.js"
   },
   "author": "",
   "license": "ISC",
