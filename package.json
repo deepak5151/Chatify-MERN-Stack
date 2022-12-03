@@ -4,8 +4,7 @@
   "description": "MERN Chat App",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon backend/server.js",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --force --prefix frontend && npm run build --prefix frontend"
+    "start": "nodemon backend/server.js"
   },
   "author": "",
   "license": "ISC",
