@@ -6,6 +6,8 @@ const chatRoutes = require("./routes/chatRoutes");
 const messageRoutes = require("./routes/messageRoutes");
 const { notFound, errorHandler } = require("./middleware/errorMiddleware");
 const path = require("path");
+const { createServer } = require("http");
+const { Server } = require("socket.io");
 
 dotenv.config();
 connectDB();
@@ -45,18 +47,24 @@ app.use(errorHandler);
 
 const PORT = process.env.PORT;
 
-const server = app.listen(
-    PORT,
-    console.log(`Server running on PORT ${PORT}...`)
-);
+const httpServer = createServer(app);
 
-const io = require("socket.io")(server, {
+const io = new Server(httpServer, {
     pingTimeout: 60000,
     cors: {
         origin: "https://chatify-deepak-kapoor.vercel.app",
         // credentials: true,
     },
 });
+
+io.on("connection", (socket) => {
+    // ...
+});
+
+httpServer.listen(PORT,
+    console.log(`Server running on ${PORT}`)
+);
+
 
 io.on("connection", (socket) => {
     console.log("Connected to socket.io");
