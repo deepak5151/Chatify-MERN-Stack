@@ -2,7 +2,6 @@
   "name": "frontend",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://localhost:5000",
   "dependencies": {
     "@chakra-ui/icons": "^2.0.9",
     "@chakra-ui/layout": "^2.1.6",
